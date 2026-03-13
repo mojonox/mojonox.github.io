@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jana's Desktop</title>
+
+<style>
+/* Classic Win98 Colors */
+:root {
+    --win-silver: #c0c0c0;
+    --win-blue: #000080;
+    --win-border-light: #ffffff;
+    --win-border-dark: #808080;
+    --win-border-darkest: #000000;
+}
+
+body {
+    /* Desktop Background */
+    background-color: #008080; 
+    background-image: url("cat-bg.jpg"); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    font-family: 'Tahoma', 'Verdana', sans-serif;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    color: black;
+}
+
+/* 3D WIN98 BORDER SYSTEM */
+.win98-outset {
+    border: 2px solid;
+    border-color: var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+    background: var(--win-silver);
+}
+
+.win98-inset {
+    border: 2px solid;
+    border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+    background: white;
+}
+
+/* DESKTOP ICONS */
+.desktop-icons {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.icon {
+    width: 70px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    font-size: 11px;
+    text-shadow: 1px 1px 1px black;
+}
+
+.icon img {
+    width: 32px;
+    height: 32px;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+/* MAIN WINDOW */
+.window {
+    position: absolute;
+    top: 10%;
+    left: 200px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-bar {
+    background: linear-gradient(90deg, var(--win-blue), #1084d0);
+    padding: 3px 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.title-controls img {
+    height: 16px;
+    background: var(--win-silver);
+    border: 1px solid white;
+    border-right: 1px solid #444;
+    border-bottom: 1px solid #444;
+    padding: 1px;
+}
+
+.menu-bar {
+    padding: 2px 10px;
+    font-size: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+.menu-bar span:first-letter { text-decoration: underline; }
+
+.content-box {
+    margin: 10px;
+    padding: 20px;
+    min-height: 300px;
+}
+
+/* TASKBAR */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background: var(--win-silver);
+    border-top: 2px solid white;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    z-index: 100;
+}
+
+.start-btn {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 2px 6px;
+    gap: 5px;
+    box-shadow: inset 1px 1px white, inset -1px -1px #808080;
+}
+
+/* BUTTONS */
+button {
+    background: var(--win-silver);
+    border: 2px solid;
+    border-color: white #808080 #808080 white;
+    padding: 5px 15px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button:active {
+    border-color: #808080 white white #808080;
+}
+
+footer {
+    margin-top: auto;
+    padding-top: 20px;
+    font-size: 11px;
+    color: #555;
+    border-top: 1px dotted #808080;
+}
+
+footer a { color: blue; }
+
+</style>
+</head>
+<body>
+
+<div class="desktop-icons">
+    <div class="icon">
+        <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-4.png" alt="My Computer">
+        My Computer
+    </div>
+    <div class="icon" onclick="window.location.href='gallery.html'">
+        <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png" alt="Gallery">
+        Martini Pics
+    </div>
+    <div class="icon">
+        <img src="https://win98icons.alexmeub.com/icons/png/recycle_bin_empty-4.png" alt="Recycle Bin">
+        Recycle Bin
+    </div>
+</div>
+
+<div class="window win98-outset">
+    <div class="title-bar">
+        <div style="display:flex; align-items:center; gap:5px;">
+            <img src="https://win98icons.alexmeub.com/icons/png/msie1-2.png" width="16">
+            Jana's_Cat_Web.html
+        </div>
+        <div class="title-controls">
+            <span>🗕</span> <span>🗗</span> <span style="font-weight:bold">🗙</span>
+        </div>
+    </div>
+
+    <div class="menu-bar">
+        <span>File</span> <span>Edit</span> <span>View</span> <span>Help</span>
+    </div>
+
+    <div class="content-box win98-inset">
+        <h2 style="margin-top:0;">Welcome to my Digital Space</h2>
+        <p>My name is <b>Jana</b> and I am a Digital Humanities student. I really like cats and silly digital spaces.</p>
+        
+        <p>Current Mission:</p>
+        <ul style="list-style-image: url('https://win98icons.alexmeub.com/icons/png/directory_closed-0.png');">
+            <li>Creating web experiences</li>
+            <li>Archiving Martini the Cat</li>
+            <li>Learning a lot of cool new stuff</li>
+        </ul>
+
+        <hr>
+        
+        <div style="text-align:center;">
+            <button onclick="meow()">Meow.exe</button>
+            <p id="meow" style="color: blue; font-family: monospace;"></p>
+        </div>
+
+        <footer>
+            All icons from this page are from <a href="https://win98icons.alexmeub.com/" target="_blank">this cool website</a>.
+        </footer>
+    </div>
+</div>
+
+<div class="taskbar">
+    <div class="start-btn win98-outset">
+        <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" width="16">
+        Start
+    </div>
+    <div class="win98-inset" style="margin-left:10px; padding: 2px 10px; font-size: 12px; display: flex; align-items: center;">
+        <img src="https://win98icons.alexmeub.com/icons/png/msie1-2.png" width="14" style="margin-right:5px;">
+        Jana's_Cat_Web.html
+    </div>
+</div>
+
+<script>
+function meow(){
+    document.getElementById("meow").innerText = "C:\\SYSTEM\\MARTINI> MEOW!!!";
+}
+</script>
+
+</body>
+</html>
