@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Martini's Gallery</title>
+
+<style>
+/* Classic Win98 Palette */
+:root {
+    --win-silver: #c0c0c0;
+    --win-blue: #000080;
+    --win-border-light: #ffffff;
+    --win-border-dark: #808080;
+}
+
+body {
+    background-color: #008080; 
+    background-image: url("cat-bg.jpg"); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Tahoma', 'Verdana', sans-serif;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    color: black;
+}
+
+.win98-outset {
+    border: 2px solid;
+    border-color: var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+    background: var(--win-silver);
+}
+
+.win98-inset {
+    border: 2px solid;
+    border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+    background: #000; 
+}
+
+/* WINDOW STACKING SYSTEM */
+.photo-window {
+    position: absolute;
+    width: 450px; /* Made bigger */
+    display: flex;
+    flex-direction: column;
+    box-shadow: 8px 8px 20px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+
+/* Larger offsets to move them toward the middle */
+#win1 { top: 10%; left: 15%; z-index: 1; }
+#win2 { top: 20%; left: 30%; z-index: 2; }
+#win3 { top: 30%; left: 45%; z-index: 3; }
+
+.title-bar {
+    background: linear-gradient(90deg, var(--win-blue), #1084d0);
+    padding: 4px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.title-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.title-controls span {
+    width: 16px;
+    height: 14px;
+    background: var(--win-silver);
+    color: black;
+    border: 1px solid white;
+    border-right: 1px solid #444;
+    border-bottom: 1px solid #444;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.content-box {
+    margin: 4px;
+    height: 350px; /* Made taller */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-box img {
+    max-width: 100%;
+    max-height: 100%;
+    image-rendering: pixelated; /* Optional: gives a retro feel to photos */
+}
+
+.caption {
+    padding: 8px;
+    font-size: 11px;
+    background: var(--win-silver);
+    border-top: 1px solid var(--win-border-dark);
+    font-family: 'Courier New', monospace; /* Looks like system data */
+}
+
+/* TASKBAR */
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background: var(--win-silver);
+    border-top: 2px solid white;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    z-index: 1000;
+}
+
+.start-btn {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 2px 10px;
+    gap: 5px;
+    box-shadow: inset 1px 1px white, inset -1px -1px #808080;
+    cursor: pointer;
+}
+
+footer {
+    position: absolute;
+    bottom: 40px;
+    right: 20px;
+    font-size: 11px;
+    color: white;
+    text-shadow: 1px 1px black;
+    z-index: 500;
+}
+footer a { color: #00ffff; }
+
+</style>
+</head>
+<body>
+
+<div class="photo-window win98-outset" id="win1" onclick="bringToFront(this)">
+    <div class="title-bar">
+        <span><img src="https://win98icons.alexmeub.com/icons/png/image_old-2.png" width="16" style="vertical-align:middle"> martini-1.jpg</span>
+        <div class="title-controls"><span>_</span><span>▢</span><span style="font-weight:bold">×</span></div>
+    </div>
+    <div class="content-box win98-inset">
+        <img src="martini-1.jpg">
+    </div>
+    <div class="caption">OBJECT: FELIS CATUS | STATUS: SLEEPY</div>
+</div>
+
+<div class="photo-window win98-outset" id="win2" onclick="bringToFront(this)">
+    <div class="title-bar">
+        <span><img src="https://win98icons.alexmeub.com/icons/png/image_old-2.png" width="16" style="vertical-align:middle"> martini-2.jpg</span>
+        <div class="title-controls"><span>_</span><span>▢</span><span style="font-weight:bold">×</span></div>
+    </div>
+    <div class="content-box win98-inset">
+        <img src="martini-2.jpg">
+    </div>
+    <div class="caption">LOCATION: UNKNOWN | MEMORY: LOW</div>
+</div>
+
+<div class="photo-window win98-outset" id="win3" onclick="bringToFront(this)">
+    <div class="title-bar">
+        <span><img src="https://win98icons.alexmeub.com/icons/png/image_old-2.png" width="16" style="vertical-align:middle"> martini-3.jpg</span>
+        <div class="title-controls"><span>_</span><span>▢</span><span style="font-weight:bold">×</span></div>
+    </div>
+    <div class="content-box win98-inset">
+        <img src="martini-3.jpg">
+    </div>
+    <div class="caption">FOCUS: 100% | ANGER: 100%</div>
+</div>
+
+<footer>
+    All icons from <a href="https://win98icons.alexmeub.com/" target="_blank">this cool website</a>
+</footer>
+
+<div class="taskbar">
+    <div class="start-btn win98-outset" onclick="window.location.href='index.html'">
+        <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" width="16">
+        Start
+    </div>
+</div>
+
+<script>
+let highestZ = 10;
+
+function bringToFront(windowElement) {
+    highestZ++;
+    windowElement.style.zIndex = highestZ;
+}
+</script>
+
+</body>
+</html>
